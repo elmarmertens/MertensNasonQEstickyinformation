@@ -1,0 +1,6 @@
+[submodule "matlabbox"]
+	path = matlabbox
+	url = https://github.com/elmarmertens/em-matlabbox.git
+[submodule "fortranbox"]
+	path = fortranbox
+	url = https://github.com/elmarmertens/em-fortranbox.git
