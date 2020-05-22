@@ -23,8 +23,8 @@ The repository contains the following directories.
 - `dataconstruction`: raw data files and Matlab scripts to compile the data set into input files used in `main`
 - `ucsv`: particle learning filter applied to the Stock and Watson (2007, JMCB) UCSV model to produce results shown in Section R.6 of our online results appendix
 - `montecarlo`: code to simulate data and the application of the particle learning filter as discussed in Section R.8 of our online results appendix
-- `matlabbox`: matlab helper routines, available via github from Elmar Mertens at https://github.com/elmarmertens/em-matlabbox (The Matlab scripts described below  modify the Matlab path to include the contents of this toolbox directory.)
-- `fortranbox`: matlab helper routines, available via github from Elmar Mertens at https://github.com/elmarmertens/em-fortranbox
+- `matlabbox`: Matlab helper routines, available via github from Elmar Mertens at https://github.com/elmarmertens/em-matlabbox (The Matlab scripts described below  modify the Matlab path to include the contents of this toolbox directory.)
+- `fortranbox`: a set of auxiliary FORTRAN modules, available via github from Elmar Mertens at https://github.com/elmarmertens/em-fortranbox
 
 The remainder of this README describes the contents of each directory (except for the toolboxes).
 
