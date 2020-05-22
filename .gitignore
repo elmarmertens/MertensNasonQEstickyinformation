@@ -10,7 +10,7 @@
 *__genmod*
 !/main
 !/montecarlo
-!/matlabtoolbox
+!/matlabbox
 !/fortranbox
 !/dataconstruction
 !/dataconstruction/*.csv
