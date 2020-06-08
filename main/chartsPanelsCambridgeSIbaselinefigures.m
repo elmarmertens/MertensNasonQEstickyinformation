@@ -572,9 +572,9 @@ figure
 set(gcf, 'defaultLegendAutoUpdate','off')
 set(gca, 'fontsize', fontsize)
 hold on
-plotCI(deltaLAMBDAsmoother(:,ndxmid), deltaLAMBDAsmoother(:,ndxtails), dates, 0, 'k-.', 'linewidth', 2)
+plotCI(deltaLAMBDAsmoother(:,ndxmid), deltaLAMBDAsmoother(:,ndxtails), dates, 0, 'w-.', 'linewidth', 2)
 plot(xtickdates([1 end]), [0 0], 'k-')
-ylim([-.2 1])
+ylim([-.3 1])
 set(gca, 'ytick', -1 : .1 : 1)
 set(gca, 'xtick', xtickdates)
 nberlines(xtickdates)
@@ -605,9 +605,9 @@ figure
 set(gcf, 'defaultLegendAutoUpdate','off')
 set(gca, 'fontsize', fontsize)
 hold on
-plotCI(deltaalt_LAMBDAsmoother(:,ndxmid), deltaalt_LAMBDAsmoother(:,ndxtails), dates, 0, 'k-.', 'linewidth', 2)
+plotCI(deltaalt_LAMBDAsmoother(:,ndxmid), deltaalt_LAMBDAsmoother(:,ndxtails), dates, 0, 'w-.', 'linewidth', 2)
 plot(xtickdates([1 end]), [0 0], 'k-')
-ylim([-.2 1])
+ylim([-.3 1])
 set(gca, 'ytick', -1 : .1 : 1)
 set(gca, 'xtick', xtickdates)
 nberlines(xtickdates)

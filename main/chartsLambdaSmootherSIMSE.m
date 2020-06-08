@@ -192,12 +192,6 @@ for m = 1 : altNlambda
     end
 end
 
-% Nsmoother = 1e2;
-% SIBIASdraws = NaN(Nsmoother,T,Nsurveys);
-% for n = 1 : Nsurveys
-%     SIBIASdraws(:,:,n) = loaddat(fullfile(datadir, sprintf('smootherSIBIASh%d.draws.%s', n, filext)));
-% end
-
 SIMSEsmoother = NaN(T,12,Nsurveys);
 for n = 1 : Nsurveys
     SIMSEsmoother(:,:,n) = loaddat(fullfile(datadir, sprintf('smootherSIMSEh%d.%s', n, filext)));
@@ -224,7 +218,13 @@ end
 thisfig = figure;
 set(gca, 'fontsize', fontsize)
 hold on
-h = plot(dates, squeeze(FEVNOISESHAREsmoother(:,ndxmid,:)), 'linewidth', 1);
+h = NaN(Nsurveys, 1);
+linetypes = {'-', '--', '-.', ':', '-'};
+for n = 1 : Nsurveys
+    h(n) = plot(dates, FEVNOISESHAREsmoother(:,ndxmid,n), linetypes{n}, 'linewidth', 1, 'MarkerSize', 5);
+end
+h(n) = plot(dates(1:4:end), FEVNOISESHAREsmoother(1:4:end,ndxmid,n), '-d', 'color', [0 .7 0], 'linewidth', 1, 'MarkerSize', 5);
+
 hl = plot(dates, squeeze(LAMBDAsmoother(:,ndxmid)), 'k-.', 'linewidth', 3);
 ylim([0 1])
 nbershades(dates)
@@ -233,65 +233,6 @@ legend([hl; h], cat(1, {'\lambda'}, SurveyLabels{:}), 'location', 'Northwest')
 figname = 'figFEVnoiseshare';
 orient landscape
 saveas(gcf, figname, 'epsc')
-
-
-% thisfig = figure;
-% set(gca, 'fontsize', fontsize)
-% hold on
-% h = plot(dates, squeeze(FEVNOISESHAREsmoother(:,ndxmid,:)), 'linewidth', 1);
-% ylim([0 1])
-% nbershades(dates)
-% % title('FEVnoiseshare')
-% legend(h, SurveyLabels{:}, 'location', 'Northwest')
-% figname = 'figFEVnoiseshareStep1';
-% orient landscape
-% print(figname, '-loose', '-depsc')
-
-
-
-%% stacked bar charts for SIMSE
-% 
-% for j = 1 : Nsurveys
-%     
-%     data = [squeeze(FEVsmoother(:,ndxmid,j)) squeeze(SIBIASsmoother(:,ndxmid,j)) ];
-%     
-%     thisfig = figure;
-%     set(gca, 'fontsize', fontsize)
-%     
-%     hold on
-%     h = bar(dates, data, 1, 'stacked');
-%     % make colors b/w compatible
-%     set(h(1), 'FaceColor', 0.7 * [1 1 1 ]);
-%     set(h(1), 'EdgeColor', 0.7 * [1 1 1 ]);
-%     set(h(2), 'FaceColor', 0 * [1 1 1 ]);
-%     set(h(2), 'EdgeColor', 0 * [1 1 1 ]);
-%     
-%     
-%     xtickdates(dates)
-%     % title(sprintf('SI-MSE (h=%d)', j))
-%     % legend(h, 'Bias share', 'Persistence share')
-%     legend(h, 'FEV', 'Squared Bias')
-%     figname = sprintf('figSIMSEbarsh%d', j);
-%     orient landscape
-%     print(figname, '-loose', '-depsc')
-%     
-% end
-
-%%  compare squared bias across counterfactuals, bar plot
-% n = 1;
-% for thisALT = 2:4
-%     thisfig = figure;
-%     set(gca, 'fontsize', fontsize)
-%     hold on
-%     h1 = bar(dates, SIBIASsmoother(:,ndxmid,n), 1, 'facecolor', .2 * [1 1 1]);
-%     h2 = plot(dates, squeeze(altSIBIASsmoother(:,ndxmid,n,thisALT)), 'r:',...
-%         'linewidth', 2);
-%     xtickdates(dates)
-%     legend([h1 h2], 'actual SI forecasts', sprintf('counterfactual with \\lambda = %4.2f', altlambda(thisALT)/10))
-%     figname = sprintf('figBIASaltSIvsSIforecastH%dLambda%d', n, altlambda(thisALT));
-%     orient landscape
-%     print(figname, '-loose', '-depsc')
-% end
 
 
 %% stacked bar charts for SIMSE with counterfactual bias
