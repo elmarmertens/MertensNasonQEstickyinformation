@@ -1,7 +1,7 @@
 # REPLICATION FILES
 # "Inflation and Professional Forecast Dynamics: An Evaluation of Stickiness, Persistence, and Volatility"
 
-accepted for publication by Quantitative Economics.
+Quantitative Economics, 2020, Vol 11(4), https://doi.org/10.3982/QE980.
 
 
 ### Authors
